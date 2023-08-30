@@ -26,13 +26,8 @@ const otherErrorsMiddleware = require('./Middleware/other-errors')
 
 
 //Routes
-
-app.get('/', (req,res) =>{
-    res.send('Testing...')
-})
-
-// app.use('/api/v1/authenticate', authenticateRouter)
-// app.use('/api/v1/characters', characterRouter)
+app.use('/api/v1/authenticate', authenticateRouter)
+app.use('/api/v1/characters', characterRouter)
 
 app.use(cantFindMiddleware)
 app.use(otherErrorsMiddleware)
