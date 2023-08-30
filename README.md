@@ -16,7 +16,7 @@ They can create characters, get all characters, get a single character, edit a c
 
 Possible features to add later on:
 1. When getting all characters users can sort them by: 
-    1. alphabetically by name
+    1. Alphabetically by name
     2. Type
     3. Medium
     4. Quality
