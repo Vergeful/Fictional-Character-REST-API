@@ -12,9 +12,6 @@ const authenticateRouter = require('./Routes/authenticate')
 const characterRouter = require('./Routes/characters')
 
 //MIDDLEWARE:
-// Authenticate user information with database:
-const authenticateUser = require('./Middleware/authenticate')
-
 // Built in middleware function in express that parses incoming requests with JSON payloads:
 app.use(express.json());
 
@@ -24,10 +21,12 @@ const cantFindMiddleware = require('./Middleware/cant-find')
 // Middleware for other other errors:
 const otherErrorsMiddleware = require('./Middleware/other-errors')
 
+// Authenticate user information with database before allowing access to their characters:
+const authenticateUserMiddleware = require('./Middleware/authenticate')
 
 //Routes
 app.use('/api/v1/authenticate', authenticateRouter)
-app.use('/api/v1/characters', characterRouter)
+app.use('/api/v1/characters', authenticateUserMiddleware, characterRouter)
 
 app.use(cantFindMiddleware)
 app.use(otherErrorsMiddleware)

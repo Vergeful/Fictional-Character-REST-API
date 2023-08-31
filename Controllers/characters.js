@@ -1,6 +1,6 @@
 // Create
 const createCharacter= async(req, res) => {
-    res.send('Create Character')
+    res.json(req.user)
 }
 
 // Read
