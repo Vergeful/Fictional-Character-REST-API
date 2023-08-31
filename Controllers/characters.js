@@ -1,6 +1,12 @@
+const CharacterModel = require('../Models/character')
+const {StatusCodes} = require('http-status-codes')
+const {BadRequestError, CantFindError} = require('../Errors')
+
 // Create
 const createCharacter= async(req, res) => {
-    res.json(req.user)
+    req.body.createdBy = req.user.userId
+    const character = await CharacterModel.create(req.body)
+    res.status(StatusCodes.CREATED).json({character})
 }
 
 // Read
