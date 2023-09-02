@@ -14,9 +14,4 @@ Each character will have the following details:
 Users can only access their own character recordings.
 They can create characters, get all characters, get a single character, edit a character's information or delete a character (CRUD).
 
-Possible features to add later on:
-1. When getting all characters users can sort them by: 
-    1. Alphabetically by name
-    2. Type
-    3. Medium
-    4. Quality
+When getting all characters, users can filter to only access characters of a specific type, quality and/or medium.
