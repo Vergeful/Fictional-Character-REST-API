@@ -5,13 +5,13 @@ const jwt = require('jsonwebtoken')
 const UserSchema = new mongoose.Schema({
     name:{
         type: String,
-        require: [true, 'Provide a name'],
+        required: [true, 'Provide a name'],
         minLength: 2,
         maxLength: 50
     },
     email:{
         type: String,
-        require: [true, 'Provid a valid email address'],
+        required: [true, 'Provide a valid email address'],
         match: [
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             'Provide a valid email address',
@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema({
     },
     password:{
         type: String,
-        require: [true, 'Provide a valid password'],
+        required: [true, 'Provide a valid password'],
         minLength: 8
     },
 })
