@@ -5,8 +5,11 @@ const otherErrorsMiddleware = (err, req, res, next) =>{
     if (err instanceof CustomError){
         return res.status(err.statusCode).json({msg: err.message})
     }
-    // If error isn't one of our custom errors, return general 500 error.
-    // This will be changed later: 
+
+    let customError = {
+        statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
+        msg: err.message || 'Server error'
+    }
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({err})
 }
 

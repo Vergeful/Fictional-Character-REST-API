@@ -11,7 +11,22 @@ const createCharacter= async(req, res) => {
 
 // Read
 const getAllCharacters = async(req, res) => {
-    const characters = await CharacterModel.find({createdBy: req.user.userId}).sort({updatedAt: -1}) // -1 to show more recent changes at beginning
+    // Allow filtering to only access characters of a specific type, quality and/or medium:
+    const {medium, type, quality} = req.query
+    const queryItems = {}
+
+    if(medium){
+        queryItems.medium = medium
+    }
+    if(type){
+        queryItems.type = type
+    }
+    if(quality){
+        queryItems.quality = quality
+    }
+
+    console.log(queryItems)
+    const characters = await CharacterModel.find({createdBy: req.user.userId, ...queryItems}).sort({updatedAt: -1}) // -1 to show more recent changes at beginning
     res.status(StatusCodes.OK).json({characters})
 }
 
