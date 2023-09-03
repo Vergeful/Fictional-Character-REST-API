@@ -41,7 +41,18 @@ const otherErrorsMiddleware = require('./Middleware/other-errors')
 // Authenticate user information with database before allowing access to their characters:
 const authenticateUserMiddleware = require('./Middleware/authenticate')
 
+// Swagger display for HTTP methods:
+const swagger = require('swagger-ui-express')
+const YAML = require('yamljs')
+const uiDoc = YAML.load('./swagger.yaml')
+
 //Routes
+app.use('/documentation', swagger.serve, swagger.setup(uiDoc))
+
+app.get('/',(req,res) =>{
+    res.send('<h1>The documentation for this character api can be found <a href="/documentation">here</a></h1>')
+} )
+
 app.use('/api/v1/authenticate', authenticateRouter)
 app.use('/api/v1/characters', authenticateUserMiddleware, characterRouter)
 

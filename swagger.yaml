@@ -1,0 +1,265 @@
+openapi: 3.0.0
+info:
+  title: Character API
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://fictional-character-api.onrender.com/api/v1
+  variables: {}
+paths:
+  /characters:
+    post:
+      tags:
+      - Characters
+      summary: Create Character
+      operationId: CreateCharacter
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateCharacterRequest'
+              - example:
+                  name: Guts
+                  medium: Manga
+                  quality: A+
+                  abilities: He is very strong.
+            example:
+              name: Guts
+              medium: Manga
+              quality: A+
+              abilities: He is very strong.
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+    get:
+      tags:
+      - Characters
+      summary: Get All Characters
+      operationId: GetAllCharacters
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /characters/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The character ID
+    patch:
+      tags:
+      - Characters
+      summary: Update Singular Character
+      operationId: UpdateSingularCharacter
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateSingularCharacterRequest'
+              - example:
+                  name: Judeau
+                  medium: Anime
+                  quality: B
+                  abilities: He is very strong.
+            example:
+              name: Judeau
+              medium: Anime
+              quality: B
+              abilities: He is very strong.
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+    delete:
+      tags:
+      - Characters
+      summary: Delete Singular Character
+      operationId: DeleteSingularCharacter
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+    get:
+      tags:
+      - Characters
+      summary: Get Singular Character
+      operationId: GetSingularCharacter
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /authenticate/login:
+    post:
+      tags:
+      - Auth
+      summary: Login User
+      operationId: LoginUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginUserRequest'
+              - example:
+                  email: john@gmail.com
+                  password: password
+            example:
+              email: john@gmail.com
+              password: password
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /authenticate/register:
+    post:
+      tags:
+      - Auth
+      summary: Register User
+      operationId: RegisterUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterUserRequest'
+              - example:
+                  name: peter
+                  email: ''
+                  password: ''
+            example:
+              name: peter
+              email: ''
+              password: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+components:
+  schemas:
+    LoginUserRequest:
+      title: LoginUserRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: john@gmail.com
+        password: password
+    UpdateSingularCharacterRequest:
+      title: UpdateSingularCharacterRequest
+      required:
+      - name
+      - medium
+      - quality
+      - abilities
+      type: object
+      properties:
+        name:
+          type: string
+        medium:
+          type: string
+        quality:
+          type: string
+        abilities:
+          type: string
+      example:
+        name: Judeau
+        medium: Anime
+        quality: B
+        abilities: He is very strong.
+    RegisterUserRequest:
+      title: RegisterUserRequest
+      required:
+      - name
+      - email
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: peter
+        email: ''
+        password: ''
+    CreateCharacterRequest:
+      title: CreateCharacterRequest
+      required:
+      - name
+      - medium
+      - quality
+      - abilities
+      type: object
+      properties:
+        name:
+          type: string
+        medium:
+          type: string
+        quality:
+          type: string
+        abilities:
+          type: string
+      example:
+        name: Guts
+        medium: Manga
+        quality: A+
+        abilities: He is very strong.
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: Misc
+  description: ''
+- name: Characters
+  description: ''
+- name: Auth
+  description: ''
