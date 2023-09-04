@@ -25,3 +25,5 @@ Some dependencies and their purpose:
 6. rate-limiter
 7. swagger-ui-express
 8. yamljs
+
+You can test the API here: https://fictional-character-api.onrender.com/documentation/

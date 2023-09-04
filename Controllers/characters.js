@@ -31,12 +31,12 @@ const getAllCharacters = async(req, res) => {
 }
 
 const getCharacter= async(req, res) => {
-    const {id: characterId} = req.params // id param is from route and represents the job id
+    const {id: characterId} = req.params // id param is from route and represents the character id
     const {userId} = req.user
 
     const character = await CharacterModel.findOne({
         _id: characterId,
-        createdBy: userId // Avoid allowing anyone with the job id access to the job
+        createdBy: userId // Avoid allowing anyone with the character id access to the job
     })
 
     if(!character){
