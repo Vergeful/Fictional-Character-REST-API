@@ -21,9 +21,8 @@ Some dependencies and their purpose:
 2. helmet - Sets multiple http headers to prevent attacks
 3. xss-clean - Cleans user info to prevent attacks
 4. express-rate-limit - Sets a request limit
-5. joi 
-6. rate-limiter
-7. swagger-ui-express
-8. yamljs
+5. rate-limiter
+6. swagger-ui-express
+7. yamljs
 
 You can test the API here: https://fictional-character-api.onrender.com/documentation/
